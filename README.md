@@ -1,5 +1,6 @@
 ## Hi there 👋
-
+- 🔭 I’m currently working on my portfolio.
+- 🌱 I’m currently learning vue js.
 <!--
 **202217b3231/202217b3231** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
