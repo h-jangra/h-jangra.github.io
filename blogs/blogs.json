@@ -2,7 +2,7 @@
   {
     "id": "third",
     "title": "Tabs using CSS only",
-    "file": "blogs/CSS-only-Tabs.md"
+    "file": "blogs/CSS_only_Tabs.md"
   },
   { "id": "first", "title": "First Blog", "file": "blogs/second.md" },
 
