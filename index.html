@@ -5,103 +5,359 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>HJangra</title>
         <style>
-            body {
-                font-family: sans-serif;
+            :root {
+                --primary-color: #2563eb;
+                --primary-hover: #1d4ed8;
+                --secondary-color: #10b981;
+                --accent-color: #f59e0b;
+                --bg-primary: #ffffff;
+                --bg-secondary: #f8fafc;
+                --bg-tertiary: #e2e8f0;
+                --text-primary: #1e293b;
+                --text-secondary: #64748b;
+                --text-light: #94a3b8;
+                --border-color: #e2e8f0;
+                --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+                --shadow-md:
+                    0 4px 6px -1px rgb(0 0 0 / 0.1),
+                    0 2px 4px -2px rgb(0 0 0 / 0.1);
+                --shadow-lg:
+                    0 10px 15px -3px rgb(0 0 0 / 0.1),
+                    0 4px 6px -4px rgb(0 0 0 / 0.1);
+                --gradient-primary: linear-gradient(
+                    135deg,
+                    var(--primary-color) 0%,
+                    var(--secondary-color) 100%
+                );
+                --gradient-accent: linear-gradient(
+                    135deg,
+                    var(--accent-color) 0%,
+                    #ef4444 100%
+                );
+            }
+
+            * {
                 margin: 0;
                 padding: 0;
-                background: #fafafa;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: "Inter", "Segoe UI", sans-serif;
+                line-height: 1.6;
+                color: var(--text-primary);
+                background: var(--bg-secondary);
+                font-size: 1.2em;
             }
 
             header {
-                background: #333;
-                padding: 0.5em 1em;
+                background: var(--gradient-primary);
+                box-shadow: var(--shadow-md);
+                position: sticky;
+                top: 0;
+                z-index: 1000;
+                backdrop-filter: blur(10px);
+            }
+
+            a {
+                cursor: pointer;
+                border: none;
             }
 
             .navbar {
                 display: flex;
                 align-items: center;
-                justify-content: space-around;
+                justify-content: space-between;
+                padding: 1rem 2rem;
+                max-width: 1200px;
+                margin: 0 auto;
             }
 
             .logo {
-                font-family: "Courier New", monospace;
-                font-size: 1.3rem;
-                font-weight: bold;
-                color: #50b498;
+                font-family: "JetBrains Mono", "Courier New", monospace;
+                font-size: 1.75rem;
+                font-weight: 800;
+                color: white;
                 text-decoration: none;
+                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                transition: transform 0.2s ease;
+            }
+
+            .logo:hover {
+                transform: scale(1.05);
             }
 
             .nav-links {
                 display: flex;
-                gap: 1em;
+                gap: 0.5rem;
                 align-items: center;
+                border-radius: 12px;
             }
 
             .nav-links a {
                 color: white;
                 text-decoration: none;
                 font-weight: 500;
+                padding: 0.5rem;
+                border-radius: 8px;
+                transition: all 0.2s ease;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .nav-links a::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: rgba(255, 255, 255, 0.1);
+                transition: left 0.3s ease;
+                z-index: -1;
+            }
+
+            .nav-links a:hover::before {
+                left: 0;
             }
 
             .nav-links a:hover {
-                color: #50b498;
-                text-decoration: underline;
+                transform: translateY(-2px);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             }
 
-            .dropdown {
-                position: relative;
-                display: inline-block;
-            }
-
-            .dropbtn {
-                background: none;
-                border: none;
-                color: white;
-                font: inherit;
-                cursor: pointer;
-                font-weight: 500;
-            }
-
-            .dropdown-content {
-                display: none;
-                position: absolute;
-                right: 0;
-                background: #444;
-                min-width: 160px;
-                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-                z-index: 1;
-            }
-
-            .dropdown-content a {
-                display: block;
-                padding: 0.5em 1em;
-                color: white;
-                text-decoration: none;
-            }
-
-            .dropdown-content a:hover {
-                background: #555;
-                color: #50b498;
-            }
-
-            .dropdown:hover .dropdown-content {
-                display: block;
-            }
-
-            ul {
-                list-style-type: none;
-                line-height: 2em;
-                padding: 0;
-                & a {
-                    color: #444;
-                    text-decoration: none;
+            @keyframes fadeInDown {
+                from {
+                    opacity: 0;
+                    transform: translateY(-10px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
                 }
             }
 
             main {
-                padding: 1.5em;
+                padding: 2rem;
                 max-width: 800px;
-                margin: auto;
+                margin: 2rem auto;
+                background: var(--bg-primary);
+                border-radius: 16px;
+                box-shadow: var(--shadow-md);
+                min-height: 60vh;
+            }
+
+            main h1,
+            main h2,
+            main h3 {
+                color: var(--text-primary);
+                margin-bottom: 1rem;
+                font-weight: 700;
+            }
+
+            main h1 {
+                font-size: 2.5rem;
+                background: var(--gradient-primary);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+
+            main h2 {
+                font-size: 2rem;
+                color: var(--primary-color);
+                border-bottom: 2px solid var(--border-color);
+                padding-bottom: 0.5rem;
+            }
+
+            main p {
+                margin-bottom: 1.5rem;
+                color: var(--text-secondary);
+                line-height: 1.7;
+            }
+
+            main code {
+                background: var(--bg-secondary);
+                padding: 0.2rem 0.4rem;
+                border-radius: 4px;
+                font-family: "JetBrains Mono", monospace;
+                color: var(--accent-color);
+                border: 1px solid var(--border-color);
+            }
+
+            main pre {
+                background: var(--bg-secondary);
+                padding: 1.5rem;
+                border-radius: 12px;
+                overflow-x: auto;
+                border: 1px solid var(--border-color);
+                margin: 1.5rem 0;
+            }
+
+            main blockquote {
+                border-left: 4px solid var(--primary-color);
+                padding: 1rem 1.5rem;
+                margin: 1.5rem 0;
+                background: var(--bg-secondary);
+                border-radius: 0 8px 8px 0;
+                font-style: italic;
+            }
+
+            ul {
+                list-style-type: none;
+                padding: 0;
+            }
+
+            #blog-index li {
+                margin-bottom: 1rem;
+                padding: 1.5rem;
+                background: var(--bg-secondary);
+                border-radius: 12px;
+                border: 1px solid var(--border-color);
+                transition: all 0.2s ease;
+            }
+
+            #blog-index li:hover {
+                transform: translateY(-2px);
+                box-shadow: var(--shadow-md);
+                border-color: var(--primary-color);
+            }
+
+            #blog-index a {
+                color: var(--text-primary);
+                text-decoration: none;
+                font-weight: 600;
+                font-size: 1.1rem;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            #blog-index a::before {
+                content: "📘";
+                font-size: 1.2rem;
+            }
+
+            #blog-index a:hover {
+                color: var(--primary-color);
+            }
+
+            @media (max-width: 768px) {
+                .navbar {
+                    padding: 1rem;
+                    flex-wrap: wrap;
+                }
+
+                .logo {
+                    font-size: 1.5rem;
+                }
+
+                @keyframes slideDown {
+                    from {
+                        opacity: 0;
+                        transform: translateY(-20px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+
+                main {
+                    margin: 1rem;
+                    padding: 1.5rem;
+                    border-radius: 12px;
+                }
+
+                main h1 {
+                    font-size: 2rem;
+                }
+
+                main h2 {
+                    font-size: 1.5rem;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .navbar {
+                    padding: 0.75rem;
+                }
+
+                .logo {
+                    font-size: 1.25rem;
+                }
+
+                main {
+                    margin: 0.5rem;
+                    padding: 1rem;
+                    border-radius: 8px;
+                }
+
+                main h1 {
+                    font-size: 1.75rem;
+                }
+
+                #blog-index li {
+                    padding: 1rem;
+                }
+            }
+
+            @media (min-width: 769px) and (max-width: 1024px) {
+                .navbar {
+                    padding: 1rem 1.5rem;
+                }
+
+                main {
+                    margin: 1.5rem;
+                    max-width: 800px;
+                }
+            }
+
+            @media (min-width: 1200px) {
+                .navbar {
+                    padding: 1.25rem 2rem;
+                }
+
+                main {
+                    max-width: 1500px;
+                    padding: 3rem;
+                }
+            }
+
+            @media (prefers-color-scheme: dark) {
+                :root {
+                    --bg-primary: #1e293b;
+                    --bg-secondary: #0f172a;
+                    --bg-tertiary: #334155;
+                    --text-primary: #f8fafc;
+                    --text-secondary: #cbd5e1;
+                    --text-light: #64748b;
+                    --border-color: #334155;
+                }
+
+                main {
+                    background: var(--bg-primary);
+                }
+            }
+
+            html {
+                scroll-behavior: smooth;
+            }
+
+            .loading {
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+                border: 3px solid var(--border-color);
+                border-radius: 50%;
+                border-top-color: var(--primary-color);
+                animation: spin 1s ease-in-out infinite;
+            }
+
+            @keyframes spin {
+                to {
+                    transform: rotate(360deg);
+                }
             }
         </style>
     </head>
@@ -112,10 +368,8 @@
                 <div id="blog-list" class="nav-links"></div>
             </nav>
         </header>
-
         <main id="content"></main>
-
-        <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
         <script>
             let blogs = [];
             const blogList = document.getElementById("blog-list");
@@ -123,53 +377,36 @@
             const maxVisible = 4;
 
             async function loadBlogList() {
-                const res = await fetch("blogs/blogs.json");
-                blogs = await res.json();
-                buildNavbar();
-                if (location.hash) {
-                    loadBlog(location.hash.substring(1));
-                } else {
-                    showHome();
+                try {
+                    content.innerHTML = '<div class="loading"></div>';
+                    const res = await fetch("blogs/blogs.json");
+                    blogs = await res.json();
+                    buildNavbar();
+                    if (location.hash) {
+                        loadBlog(location.hash.substring(1));
+                    } else {
+                        showHome();
+                    }
+                } catch (error) {
+                    content.innerHTML =
+                        "<p>Error loading blog list. Please check if blogs/blogs.json exists.</p>";
                 }
             }
 
             function buildNavbar() {
                 blogList.innerHTML = "";
-                blogs.forEach((b, i) => {
-                    if (i < maxVisible) {
-                        const link = document.createElement("a");
-                        link.href = "#" + b.id;
-                        link.innerText = b.title;
-                        link.addEventListener("click", (e) => {
-                            e.preventDefault();
-                            loadBlog(b.id);
-                            history.pushState({ id: b.id }, "", "#" + b.id);
-                        });
-                        blogList.appendChild(link);
-                    }
-                });
 
-                if (blogs.length > maxVisible) {
-                    const dropdown = document.createElement("div");
-                    dropdown.classList.add("dropdown");
-                    dropdown.innerHTML = `<button class="dropbtn">More ▾</button><div class="dropdown-content"></div>`;
-                    const dropdownContent =
-                        dropdown.querySelector(".dropdown-content");
-
-                    blogs.slice(maxVisible).forEach((b) => {
-                        const link = document.createElement("a");
-                        link.href = "#" + b.id;
-                        link.innerText = b.title;
-                        link.addEventListener("click", (e) => {
-                            e.preventDefault();
-                            loadBlog(b.id);
-                            history.pushState({ id: b.id }, "", "#" + b.id);
-                        });
-                        dropdownContent.appendChild(link);
+                blogs.slice(0, 2).forEach((b) => {
+                    const link = document.createElement("a");
+                    link.href = "#" + b.id;
+                    link.innerText = b.title;
+                    link.addEventListener("click", (e) => {
+                        e.preventDefault();
+                        loadBlog(b.id);
+                        history.pushState({ id: b.id }, "", "#" + b.id);
                     });
-
-                    blogList.appendChild(dropdown);
-                }
+                    blogList.appendChild(link);
+                });
             }
 
             async function loadBlog(blogId) {
@@ -178,19 +415,22 @@
                     showHome();
                     return;
                 }
+
                 try {
+                    content.innerHTML = '<div class="loading"></div>';
                     const res = await fetch(blog.file);
                     const text = await res.text();
                     content.innerHTML = marked.parse(text);
                 } catch (err) {
-                    content.innerHTML = "<p>Error loading blog.</p>";
+                    content.innerHTML =
+                        "<p>Error loading blog post. Please check if the file exists.</p>";
                 }
             }
 
             function showHome() {
-                content.innerHTML =
-                    "<h2>All Blogs</h2><ul id='blog-index'></ul>";
+                content.innerHTML = "<h2></h2><ul id='blog-index'></ul>";
                 const ul = document.getElementById("blog-index");
+
                 blogs.forEach((b) => {
                     const li = document.createElement("li");
                     const a = document.createElement("a");
@@ -210,6 +450,22 @@
                 e.preventDefault();
                 showHome();
                 history.pushState({}, "", "#");
+            });
+
+            window.addEventListener("popstate", (e) => {
+                if (e.state && e.state.id) {
+                    loadBlog(e.state.id);
+                } else {
+                    showHome();
+                }
+            });
+
+            let resizeTimeout;
+            window.addEventListener("resize", () => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(() => {
+                    buildNavbar();
+                }, 250);
             });
 
             loadBlogList();

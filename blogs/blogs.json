@@ -1,5 +1,11 @@
 [
+  {
+    "id": "third",
+    "title": "Third Blog lorem ipsum",
+    "file": "blogs/third.md"
+  },
   { "id": "first", "title": "First Blog", "file": "blogs/first.md" },
   { "id": "second", "title": "Second Blog", "file": "blogs/second.md" },
-  { "id": "third", "title": "Third Blog", "file": "blogs/third.md" }
+  { "id": "third1", "title": "Third1 Blog", "file": "blogs/third.md" },
+  { "id": "third2", "title": "Third2 Blog", "file": "blogs/third.md" }
 ]
