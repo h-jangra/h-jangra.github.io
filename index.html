@@ -379,7 +379,7 @@
             async function loadBlogList() {
                 try {
                     content.innerHTML = '<div class="loading"></div>';
-                    const res = await fetch("blogs/blogs.json");
+                    const res = await fetch("blogs.json");
                     blogs = await res.json();
                     buildNavbar();
                     if (location.hash) {
