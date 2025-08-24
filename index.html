@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>HJangra</title>
+        <style>
+            body {
+                font-family: sans-serif;
+                margin: 0;
+                padding: 0;
+                background: #fafafa;
+            }
+
+            header {
+                background: #333;
+                padding: 0.5em 1em;
+            }
+
+            .navbar {
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+            }
+
+            .logo {
+                font-family: "Courier New", monospace;
+                font-size: 1.3rem;
+                font-weight: bold;
+                color: #50b498;
+                text-decoration: none;
+            }
+
+            .nav-links {
+                display: flex;
+                gap: 1em;
+                align-items: center;
+            }
+
+            .nav-links a {
+                color: white;
+                text-decoration: none;
+                font-weight: 500;
+            }
+
+            .nav-links a:hover {
+                color: #50b498;
+                text-decoration: underline;
+            }
+
+            .dropdown {
+                position: relative;
+                display: inline-block;
+            }
+
+            .dropbtn {
+                background: none;
+                border: none;
+                color: white;
+                font: inherit;
+                cursor: pointer;
+                font-weight: 500;
+            }
+
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                right: 0;
+                background: #444;
+                min-width: 160px;
+                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+                z-index: 1;
+            }
+
+            .dropdown-content a {
+                display: block;
+                padding: 0.5em 1em;
+                color: white;
+                text-decoration: none;
+            }
+
+            .dropdown-content a:hover {
+                background: #555;
+                color: #50b498;
+            }
+
+            .dropdown:hover .dropdown-content {
+                display: block;
+            }
+
+            ul {
+                list-style-type: none;
+                line-height: 2em;
+                padding: 0;
+                & a {
+                    color: #444;
+                    text-decoration: none;
+                }
+            }
+
+            main {
+                padding: 1.5em;
+                max-width: 800px;
+                margin: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <nav class="navbar">
+                <a href="#" class="logo">HJangra</a>
+                <div id="blog-list" class="nav-links"></div>
+            </nav>
+        </header>
+
+        <main id="content"></main>
+
+        <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+        <script>
+            let blogs = [];
+            const blogList = document.getElementById("blog-list");
+            const content = document.getElementById("content");
+            const maxVisible = 4;
+
+            async function loadBlogList() {
+                const res = await fetch("blogs/blogs.json");
+                blogs = await res.json();
+                buildNavbar();
+                if (location.hash) {
+                    loadBlog(location.hash.substring(1));
+                } else {
+                    showHome();
+                }
+            }
+
+            function buildNavbar() {
+                blogList.innerHTML = "";
+                blogs.forEach((b, i) => {
+                    if (i < maxVisible) {
+                        const link = document.createElement("a");
+                        link.href = "#" + b.id;
+                        link.innerText = b.title;
+                        link.addEventListener("click", (e) => {
+                            e.preventDefault();
+                            loadBlog(b.id);
+                            history.pushState({ id: b.id }, "", "#" + b.id);
+                        });
+                        blogList.appendChild(link);
+                    }
+                });
+
+                if (blogs.length > maxVisible) {
+                    const dropdown = document.createElement("div");
+                    dropdown.classList.add("dropdown");
+                    dropdown.innerHTML = `<button class="dropbtn">More ▾</button><div class="dropdown-content"></div>`;
+                    const dropdownContent =
+                        dropdown.querySelector(".dropdown-content");
+
+                    blogs.slice(maxVisible).forEach((b) => {
+                        const link = document.createElement("a");
+                        link.href = "#" + b.id;
+                        link.innerText = b.title;
+                        link.addEventListener("click", (e) => {
+                            e.preventDefault();
+                            loadBlog(b.id);
+                            history.pushState({ id: b.id }, "", "#" + b.id);
+                        });
+                        dropdownContent.appendChild(link);
+                    });
+
+                    blogList.appendChild(dropdown);
+                }
+            }
+
+            async function loadBlog(blogId) {
+                const blog = blogs.find((b) => b.id === blogId);
+                if (!blog) {
+                    showHome();
+                    return;
+                }
+                try {
+                    const res = await fetch(blog.file);
+                    const text = await res.text();
+                    content.innerHTML = marked.parse(text);
+                } catch (err) {
+                    content.innerHTML = "<p>Error loading blog.</p>";
+                }
+            }
+
+            function showHome() {
+                content.innerHTML =
+                    "<h2>All Blogs</h2><ul id='blog-index'></ul>";
+                const ul = document.getElementById("blog-index");
+                blogs.forEach((b) => {
+                    const li = document.createElement("li");
+                    const a = document.createElement("a");
+                    a.href = "#" + b.id;
+                    a.textContent = b.title;
+                    a.addEventListener("click", (e) => {
+                        e.preventDefault();
+                        loadBlog(b.id);
+                        history.pushState({ id: b.id }, "", "#" + b.id);
+                    });
+                    li.appendChild(a);
+                    ul.appendChild(li);
+                });
+            }
+
+            document.querySelector(".logo").addEventListener("click", (e) => {
+                e.preventDefault();
+                showHome();
+                history.pushState({}, "", "#");
+            });
+
+            loadBlogList();
+        </script>
+    </body>
+</html>
