@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
@@ -7,33 +7,12 @@
         <style>
             :root {
                 --primary-color: #2563eb;
-                --primary-hover: #1d4ed8;
                 --secondary-color: #10b981;
                 --accent-color: #f59e0b;
-                --bg-primary: #ffffff;
-                --bg-secondary: #f8fafc;
-                --bg-tertiary: #e2e8f0;
-                --text-primary: #1e293b;
-                --text-secondary: #64748b;
-                --text-light: #94a3b8;
+                --bg-light: #f8fafc;
+                --bg-dark: #ffffff;
+                --text-dark: #1e293b;
                 --border-color: #e2e8f0;
-                --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-                --shadow-md:
-                    0 4px 6px -1px rgb(0 0 0 / 0.1),
-                    0 2px 4px -2px rgb(0 0 0 / 0.1);
-                --shadow-lg:
-                    0 10px 15px -3px rgb(0 0 0 / 0.1),
-                    0 4px 6px -4px rgb(0 0 0 / 0.1);
-                --gradient-primary: linear-gradient(
-                    135deg,
-                    var(--primary-color) 0%,
-                    var(--secondary-color) 100%
-                );
-                --gradient-accent: linear-gradient(
-                    135deg,
-                    var(--accent-color) 0%,
-                    #ef4444 100%
-                );
             }
 
             * {
@@ -42,44 +21,42 @@
                 box-sizing: border-box;
             }
 
+            /* Base Body Styling */
             body {
                 font-family: "Inter", "Segoe UI", sans-serif;
+                font-size: 1.125em;
                 line-height: 1.6;
-                color: var(--text-primary);
-                background: var(--bg-secondary);
-                font-size: 1.2em;
+                color: var(--text-dark);
+                background: var(--bg-light);
             }
 
+            /* Header & Navbar */
             header {
-                background: var(--gradient-primary);
-                box-shadow: var(--shadow-md);
+                background: linear-gradient(
+                    135deg,
+                    var(--primary-color),
+                    var(--secondary-color)
+                );
+                padding: 1rem 2rem;
                 position: sticky;
                 top: 0;
                 z-index: 1000;
-                backdrop-filter: blur(10px);
-            }
-
-            a {
-                cursor: pointer;
-                border: none;
             }
 
             .navbar {
+                max-width: 1200px;
+                margin: 0 auto;
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                padding: 1rem 2rem;
-                max-width: 1200px;
-                margin: 0 auto;
             }
 
             .logo {
-                font-family: "JetBrains Mono", "Courier New", monospace;
+                font-family: "JetBrains Mono", monospace;
                 font-size: 1.75rem;
                 font-weight: 800;
-                color: white;
+                color: #fff;
                 text-decoration: none;
-                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
                 transition: transform 0.2s ease;
             }
 
@@ -87,77 +64,52 @@
                 transform: scale(1.05);
             }
 
+            /* Navigation links */
             .nav-links {
                 display: flex;
-                gap: 0.5rem;
-                align-items: center;
-                border-radius: 12px;
+                gap: 1rem;
             }
 
             .nav-links a {
-                color: white;
+                color: #fff;
                 text-decoration: none;
                 font-weight: 500;
                 padding: 0.5rem;
-                border-radius: 8px;
-                transition: all 0.2s ease;
-                position: relative;
-                overflow: hidden;
-            }
-
-            .nav-links a::before {
-                content: "";
-                position: absolute;
-                top: 0;
-                left: -100%;
-                width: 100%;
-                height: 100%;
-                background: rgba(255, 255, 255, 0.1);
-                transition: left 0.3s ease;
-                z-index: -1;
-            }
-
-            .nav-links a:hover::before {
-                left: 0;
+                border-radius: 4px;
+                transition: background-color 0.2s ease, transform 0.2s ease;
             }
 
             .nav-links a:hover {
+                background-color: rgba(255, 255, 255, 0.15);
                 transform: translateY(-2px);
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             }
 
-            @keyframes fadeInDown {
-                from {
-                    opacity: 0;
-                    transform: translateY(-10px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-
+            /* Main content styling */
             main {
-                padding: 2rem;
                 max-width: 800px;
                 margin: 2rem auto;
-                background: var(--bg-primary);
-                border-radius: 16px;
-                box-shadow: var(--shadow-md);
-                min-height: 60vh;
+                background: var(--bg-dark);
+                padding: 2rem;
+                border-radius: 8px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             }
 
+            /* Headings */
             main h1,
             main h2,
             main h3 {
-                color: var(--text-primary);
+                color: var(--text-dark);
                 margin-bottom: 1rem;
                 font-weight: 700;
             }
 
             main h1 {
                 font-size: 2.5rem;
-                background: var(--gradient-primary);
+                background: linear-gradient(
+                    135deg,
+                    var(--primary-color),
+                    var(--secondary-color)
+                );
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
                 background-clip: text;
@@ -172,191 +124,73 @@
 
             main p {
                 margin-bottom: 1.5rem;
-                color: var(--text-secondary);
-                line-height: 1.7;
+                color: var(--text-dark);
             }
 
+            /* Code and Preformatted Text */
             main code {
-                background: var(--bg-secondary);
+                background: var(--bg-light);
                 padding: 0.2rem 0.4rem;
                 border-radius: 4px;
                 font-family: "JetBrains Mono", monospace;
-                color: var(--accent-color);
                 border: 1px solid var(--border-color);
             }
 
             main pre {
-                background: var(--bg-secondary);
-                padding: 1.5rem;
-                border-radius: 12px;
-                overflow-x: auto;
+                background: var(--bg-light);
+                padding: 1rem;
+                border-radius: 8px;
                 border: 1px solid var(--border-color);
+                overflow-x: auto;
                 margin: 1.5rem 0;
             }
 
+            /* Blockquotes */
             main blockquote {
                 border-left: 4px solid var(--primary-color);
-                padding: 1rem 1.5rem;
+                padding: 1rem;
                 margin: 1.5rem 0;
-                background: var(--bg-secondary);
-                border-radius: 0 8px 8px 0;
+                background: var(--bg-light);
+                border-radius: 4px;
                 font-style: italic;
             }
 
-            ul {
-                list-style-type: none;
-                padding: 0;
-            }
-
+            /* Blog Index List */
             #blog-index li {
                 margin-bottom: 1rem;
-                padding: 1.5rem;
-                background: var(--bg-secondary);
-                border-radius: 12px;
+                padding: 1rem;
+                background: var(--bg-light);
                 border: 1px solid var(--border-color);
-                transition: all 0.2s ease;
+                border-radius: 8px;
+                transition: transform 0.2s ease, box-shadow 0.2s ease;
             }
 
             #blog-index li:hover {
                 transform: translateY(-2px);
-                box-shadow: var(--shadow-md);
-                border-color: var(--primary-color);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             }
 
             #blog-index a {
-                color: var(--text-primary);
+                color: var(--text-dark);
                 text-decoration: none;
                 font-weight: 600;
-                font-size: 1.1rem;
                 display: flex;
                 align-items: center;
                 gap: 0.5rem;
             }
 
-            #blog-index a::before {
-                content: "📘";
-                font-size: 1.2rem;
-            }
-
-            #blog-index a:hover {
-                color: var(--primary-color);
-            }
-
             @media (max-width: 768px) {
+                body {
+                    font-size: 1em;
+                }
+
                 .navbar {
-                    padding: 1rem;
                     flex-wrap: wrap;
-                }
-
-                .logo {
-                    font-size: 1.5rem;
-                }
-
-                @keyframes slideDown {
-                    from {
-                        opacity: 0;
-                        transform: translateY(-20px);
-                    }
-                    to {
-                        opacity: 1;
-                        transform: translateY(0);
-                    }
                 }
 
                 main {
                     margin: 1rem;
                     padding: 1.5rem;
-                    border-radius: 12px;
-                }
-
-                main h1 {
-                    font-size: 2rem;
-                }
-
-                main h2 {
-                    font-size: 1.5rem;
-                }
-            }
-
-            @media (max-width: 480px) {
-                .navbar {
-                    padding: 0.75rem;
-                }
-
-                .logo {
-                    font-size: 1.25rem;
-                }
-
-                main {
-                    margin: 0.5rem;
-                    padding: 1rem;
-                    border-radius: 8px;
-                }
-
-                main h1 {
-                    font-size: 1.75rem;
-                }
-
-                #blog-index li {
-                    padding: 1rem;
-                }
-            }
-
-            @media (min-width: 769px) and (max-width: 1024px) {
-                .navbar {
-                    padding: 1rem 1.5rem;
-                }
-
-                main {
-                    margin: 1.5rem;
-                    max-width: 800px;
-                }
-            }
-
-            @media (min-width: 1200px) {
-                .navbar {
-                    padding: 1.25rem 2rem;
-                }
-
-                main {
-                    max-width: 1500px;
-                    padding: 3rem;
-                }
-            }
-
-            @media (prefers-color-scheme: dark) {
-                :root {
-                    --bg-primary: #1e293b;
-                    --bg-secondary: #0f172a;
-                    --bg-tertiary: #334155;
-                    --text-primary: #f8fafc;
-                    --text-secondary: #cbd5e1;
-                    --text-light: #64748b;
-                    --border-color: #334155;
-                }
-
-                main {
-                    background: var(--bg-primary);
-                }
-            }
-
-            html {
-                scroll-behavior: smooth;
-            }
-
-            .loading {
-                display: inline-block;
-                width: 20px;
-                height: 20px;
-                border: 3px solid var(--border-color);
-                border-radius: 50%;
-                border-top-color: var(--primary-color);
-                animation: spin 1s ease-in-out infinite;
-            }
-
-            @keyframes spin {
-                to {
-                    transform: rotate(360deg);
                 }
             }
         </style>
