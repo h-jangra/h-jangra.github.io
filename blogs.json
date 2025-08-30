@@ -5,8 +5,8 @@
     "file": "./blogs/CSS_only_Tabs.md"
   },
   {
-    "id": "first",
-    "title": "First Blog",
-    "file": "./blogs/second.md"
+    "id": "nvim-cpp-warnings",
+    "title": "iostream not found - nvim warnings",
+    "file": "blogs/nvim-cpp-warnings.md"
   }
 ]
