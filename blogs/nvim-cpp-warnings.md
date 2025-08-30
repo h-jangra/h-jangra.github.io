@@ -26,9 +26,3 @@ I added a `.clangd` file in the project root:
 CompileFlags:
   Add: [-std=c++17, -I/usr/include/c++/11, -I/usr/include/x86_64-linux-gnu/c++/11]
 ````
-
----
-
-**Tip:** if you use CMake, generate `compile_commands.json` instead. `clangd` will auto-detect flags.
-
-```
