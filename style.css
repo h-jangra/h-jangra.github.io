@@ -1,0 +1,160 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,500&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+
+:root {
+  --title-font: "Space Grotesk", sans-serif;
+  --subtitle-font: "Inter", sans-serif;
+  --italic-font: "Playfair Display", serif;
+
+  --blog-bg: #e9e6e4;
+  --body-bg: #e9e6e4;
+
+  --title-color: #121418;
+  --subtitle-color: #161419;
+  --border-color: #94918f;
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--subtitle-font);
+  background: var(--body-bg);
+  color: var(--title-color);
+  line-height: 1.6;
+}
+
+/* Navbar */
+nav {
+  text-align: center;
+  padding: 1rem;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  list-style: none;
+}
+
+nav a {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--blog-bg);
+  padding: 0.4rem 0.8rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+
+nav a:hover {
+  background: var(--blog-bg);
+  color: var(--title-color);
+}
+
+/* Main content */
+main {
+  max-width: 800px;
+  margin: 2rem auto;
+  background: var(--blog-bg);
+  padding: 2rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+}
+
+main h1 {
+  font-family: var(--title-font);
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  color: var(--title-color);
+}
+
+main h2 {
+  font-family: var(--subtitle-font);
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--subtitle-color);
+}
+
+main p {
+  margin-bottom: 1rem;
+}
+
+/* Blog Index */
+#blog-index {
+  margin-top: 1.5rem;
+  display: grid;
+  gap: 1rem;
+}
+
+#blog-index li {
+  list-style: none;
+  border: 1px solid var(--border-color);
+  padding: 1rem;
+  border-radius: 6px;
+  background: #fff;
+  transition: transform 0.2s ease;
+}
+
+#blog-index li:hover {
+  transform: translateY(-3px);
+}
+
+#blog-index a {
+  text-decoration: none;
+  color: var(--title-color);
+  font-weight: 600;
+}
+
+pre {
+  position: relative;
+  background: #1e1e1e;
+  color: #f8f8f2;
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+  border: 1px solid var(--border-color);
+  font-size: 0.9rem;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.8rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background: var(--body-bg);
+  color: var(--blog-bg);
+  transition: background 0.2s;
+}
+
+.copy-btn:hover {
+  background: var(--border-color);
+  color: var(--title-color);
+}
+
+/* Go Back button */
+.go-back {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  background: transparent;
+  color: var(--title-color);
+  transition: background 0.2s ease;
+}
+
+.go-back:hover {
+  background: var(--body-bg);
+  color: var(--blog-bg);
+}

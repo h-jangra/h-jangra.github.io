@@ -1,264 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HJangra</title>
-    <style>
-    :root {
-      --primary-color: #2563eb;
-      --secondary-color: #10b981;
-      --accent-color: #f59e0b;
-      --bg-light: #f8fafc;
-      --bg-dark: #ffffff;
-      --text-dark: #1e293b;
-      --border-color: #e2e8f0;
-    }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HJangra</title>
+  <link href="style.css" rel="stylesheet" />
+</head>
 
-    body {
-      font-family: "Inter", "Segoe UI", sans-serif;
-      line-height: 1.6;
-      color: var(--text-dark);
-      background: var(--bg-light);
-    }
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li> <a href="#">Home</a></li>
+        <li> <a href="https://github.com/h-jangra" target="_blank">GH</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main id="content">
+    <section id="portfolio">
+      <h2>Portfolio</h2>
+      <div class="projects">
+        <div class="project-card">
+          <h3>Project One</h3>
+          <p>Short description of project. Built with React & Tailwind.</p>
+        </div>
+        <div class="project-card">
+          <h3>Project Two</h3>
+          <p>Something about this one. Built in Python & Flask.</p>
+        </div>
+        <div class="project-card">
+          <h3>Project Three</h3>
+          <p>Portfolio site itself, built in vanilla HTML, CSS, JS.</p>
+        </div>
+      </div>
+    </section>
 
-    /* header { */
-    /*   background: linear-gradient( */
-    /*     135deg, */
-    /*     var(--primary-color), */
-    /*     var(--secondary-color) */
-    /*     ); */
-    /*   padding: 0 1rem; */
-    /*   position: sticky; */
-    /*   top: 0; */
-    /*   z-index: 1000; */
-    /* } */
-
-    nav {
-      width: fit-content;
-      margin: 0.2rem auto;
-      background: hsl(0 0% 0% / 0.8);
-
-      padding: 8px;
-      border-radius: 8px;
-
-      isolation: isolate;
-
-      anchor-name: --hovered-link;
-
-      li:hover {
-        anchor-name: --hovered-link;
-      }
-
-      &::before,
-      &::after {
-        content: "";
-        content: "";
-        position: absolute;
-        top: calc(anchor(bottom) - 10px);
-        left: calc(anchor(left) + 1rem);
-        right: calc(anchor(right) + 1rem);
-        bottom: calc(anchor(bottom) + 5px);
-        border-radius: 10px;
-
-        position-anchor: --hovered-link;
-
-        transition: 500ms
-          linear(
-          0,
-          0.029 1.6%,
-          0.123 3.5%,
-          0.651 10.6%,
-          0.862 14.1%,
-          1.002 17.7%,
-          1.046 19.6%,
-          1.074 21.6%,
-          1.087 23.9%,
-          1.086 26.6%,
-          1.014 38.5%,
-          0.994 46.3%,
-          1
-          );
-      }
-
-      &::before {
-        z-index: -1;
-        background: rgb(0 0 0 / 0.2);
-        backdrop-filter: blur(2px);
-      }
-
-      &::after {
-        z-index: -2;
-        background: linear-gradient(
-        135deg,
-        var(--primary-color),
-        var(--secondary-color)
-        );
- 
-      }
-
-      &:has(a:hover)::before,
-      &:has(a:hover)::after {
-        top: anchor(top);
-        left: anchor(left);
-        right: anchor(right);
-        bottom: anchor(bottom);
-
-        @supports (corner-shape: squircle) {
-          corner-shape: squircle;
-          border-radius: 50%;
-        }
-      }
-
-      &:has(li:first-of-type a:hover)::before,
-      &:has(li:first-of-type a:hover)::after {
-        @supports (corner-shape: squircle) {
-          border-radius: 32px 50% 50% 32px;
-        }
-      }
-
-      &:has(li:last-of-type a:hover)::before,
-      &:has(li:last-of-type a:hover)::after {
-        @supports (corner-shape: squircle) {
-          border-radius: 50% 32px 32px 50%;
-        }
-      }
-
-      @supports (corner-shape: squircle) {
-        border-radius: 24px;
-        corner-shape: squircle;
-      }
-
-      > ul {
-        padding: 0;
-        margin: 0;
-        list-style: none;
-        display: flex;
-      }
-
-      a {
-        display: block;
-        padding: 0.3rem 1rem;
-        text-decoration: none;
-        color: white;
-      }
-    }    main {
-      max-width: 800px;
-      margin: 2rem auto;
-      background: var(--bg-dark);
-      padding: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    main h1,
-    main h2,
-    main h3 {
-      color: var(--text-dark);
-      margin-bottom: 1rem;
-      font-weight: 700;
-    }
-
-    main h1 {
-      font-size: 2.5rem;
-      background: linear-gradient(
-        135deg,
-        var(--primary-color),
-        var(--secondary-color)
-        );
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    main h2 {
-      font-size: 2rem;
-      color: var(--primary-color);
-      border-bottom: 2px solid var(--border-color);
-      padding-bottom: 0.5rem;
-    }
-
-    main p {
-      margin-bottom: 1.5rem;
-      color: var(--text-dark);
-    }
-
-    main code {
-      background: var(--bg-light);
-      padding: 0.2rem 0.4rem;
-      border-radius: 4px;
-    }
-
-    main pre {
-      background: var(--bg-light);
-      padding: 1rem;
-      border-radius: 8px;
-      border: 1px solid var(--border-color);
-      overflow-x: auto;
-      margin: 1.5rem 0;
-    }
-
-    main blockquote {
-      border-left: 4px solid var(--primary-color);
-      padding: 1rem;
-      margin: 1.5rem 0;
-      background: var(--bg-light);
-      border-radius: 4px;
-      font-style: italic;
-    }
-
-    #blog-index li {
-      margin-bottom: 1rem;
-      padding: 1rem;
-      list-style: none;
-      background: var(--bg-light);
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    #blog-index li:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    #blog-index a {
-      text-decoration: none;
-      font-weight: 600;
-      align-items: center;
-    }
-
-    @media (max-width: 768px) {
-
-      .navbar {
-        flex-wrap: wrap;
-      }
-
-      main {
-        margin: 1rem;
-        padding: 1.5rem;
-      }
-    }
-    </style>
-  </head>
-  <body>
-    <header>
-      <nav>
-        <ul>
-          <li> <a href="#">Home</a></li>
-          <li> <a href="https://github.com/h-jangra" target="_blank">GH</a></li>
-        </ul>
-      </nav>
-    </header>
-    <main id="content"></main>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
-    <script>
+  </main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
+  <script>
     let blogs = [];
     const content = document.getElementById("content");
     const maxVisible = 4;
@@ -309,7 +89,7 @@
         a.addEventListener("click", (e) => {
           e.preventDefault();
           loadBlog(b.id);
-          history.pushState({ id: b.id }, "", "#" + b.id);
+          history.pushState({id: b.id}, "", "#" + b.id);
         });
         li.appendChild(a);
         ul.appendChild(li);
@@ -333,6 +113,82 @@
     });
 
     loadBlogList();
-    </script>
-  </body>
+
+    async function loadBlog(blogId) {
+      const blog = blogs.find((b) => b.id === blogId);
+      if (!blog) {
+        showHome();
+        return;
+      }
+
+      try {
+        content.innerHTML = '<div class="loading"></div>';
+        const res = await fetch(blog.file);
+        const text = await res.text();
+        content.innerHTML = marked.parse(text);
+
+        // Add Go Back button
+        const backBtn = document.createElement("a");
+        backBtn.href = "#";
+        backBtn.textContent = "← Go Back";
+        backBtn.className = "go-back";
+        backBtn.addEventListener("click", (e) => {
+          e.preventDefault();
+          showHome();
+          history.pushState({}, "", "#");
+        });
+        content.appendChild(backBtn);
+      } catch (err) {
+        content.innerHTML =
+          "<p>Error loading blog post. Please check if the file exists.</p>";
+      }
+    }
+    async function loadBlog(blogId) {
+      const blog = blogs.find((b) => b.id === blogId);
+      if (!blog) {
+        showHome();
+        return;
+      }
+
+      try {
+        content.innerHTML = '<div class="loading"></div>';
+        const res = await fetch(blog.file);
+        const text = await res.text();
+        content.innerHTML = marked.parse(text);
+
+        // Add "Go Back" button
+        const backBtn = document.createElement("a");
+        backBtn.href = "#";
+        backBtn.textContent = "← Go Back";
+        backBtn.className = "go-back";
+        backBtn.addEventListener("click", (e) => {
+          e.preventDefault();
+          showHome();
+          history.pushState({}, "", "#");
+        });
+        content.appendChild(backBtn);
+
+        // Add copy buttons to <pre>
+        document.querySelectorAll("pre").forEach((block) => {
+          const btn = document.createElement("button");
+          btn.textContent = "Copy";
+          btn.className = "copy-btn";
+          btn.addEventListener("click", () => {
+            const code = block.innerText;
+            navigator.clipboard.writeText(code).then(() => {
+              btn.textContent = "Copied!";
+              setTimeout(() => (btn.textContent = "Copy"), 1500);
+            });
+          });
+          block.appendChild(btn);
+        });
+      } catch (err) {
+        content.innerHTML =
+          "<p>Error loading blog post. Please check if the file exists.</p>";
+      }
+    }
+
+  </script>
+</body>
+
 </html>
