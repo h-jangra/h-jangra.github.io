@@ -8,5 +8,10 @@
     "id": "nvim-cpp-warnings",
     "title": "iostream not found - nvim warnings",
     "file": "blogs/nvim-cpp-warnings.md"
+  },
+  {
+    "id": "get-file-hash.md",
+    "title": "Get zip file hashes",
+    "file": "blogs/get-file-hash.md"
   }
 ]
