@@ -1,12 +1,10 @@
 [
   {
-    "id": "Tabs-using-css",
     "title": "Tabs using CSS only",
-    "file": "./blogs/CSS_only_Tabs.md"
+    "file": "blogs/CSS_only_Tabs.md"
   },
   {
-    "id": "nvim-cpp-warnings",
-    "title": "iostream not found - nvim warnings",
+    "title": "iostream not found : nvim warnings",
     "file": "blogs/nvim-cpp-warnings.md"
   }
 ]

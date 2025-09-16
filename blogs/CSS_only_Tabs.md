@@ -6,6 +6,7 @@ Tabs are one of those UI patterns you see everywhere—on websites, dashboards, 
 
 ## Step 1: The Basic Structure
 We’ll use radio buttons (or checkboxes) hidden in the background to control which tab is active. Each tab will have:
+
 - A label (the clickable tab button)
 - A content box
 

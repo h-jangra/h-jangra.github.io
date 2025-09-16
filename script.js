@@ -1,4 +1,3 @@
-// script.js
 let blogs = [];
 	const content = document.getElementById("content");
 	const maxVisible = 4;
@@ -20,7 +19,8 @@ let blogs = [];
 	}
 
 	async function loadBlog(blogId) {
-		const blog = blogs.find((b) => b.id === blogId);
+    const bid = blogId.replaceAll('-',' ');
+		const blog = blogs.find((b) => b.title === bid);
 		if (!blog) {
 			showHome();
 			return;
@@ -38,18 +38,19 @@ let blogs = [];
 	}
 
 	function showHome() {
-		content.innerHTML = "<h2>Posts</h2><ul id='blog-index'></ul>";
+		content.innerHTML = "<h2>Posts</h2><section id='blog-index'></section>";
 		const ul = document.getElementById("blog-index");
 
 		blogs.forEach((b) => {
-			const li = document.createElement("li");
+      const id = b.title.replaceAll(' ','-');
+			const li = document.createElement("article");
 			const a = document.createElement("a");
-			a.href = "#" + b.id;
+			a.href = "#" + id;
 			a.textContent = b.title;
 			a.addEventListener("click", (e) => {
 				e.preventDefault();
-				loadBlog(b.id);
-				history.pushState({id: b.id}, "", "#" + b.id);
+				loadBlog(id);
+				history.pushState({id: id}, "", "#" + id);
 			});
 			li.appendChild(a);
 			ul.appendChild(li);
@@ -57,19 +58,12 @@ let blogs = [];
 	}
 
 	window.addEventListener("popstate", (e) => {
+      console.log(e)
 		if (e.state && e.state.id) {
-			loadBlog(e.state.id);
+			loadBlog(e.state.id.replaceAll('-',' '));
 		} else {
 			showHome();
 		}
-	});
-
-	let resizeTimeout;
-	window.addEventListener("resize", () => {
-		clearTimeout(resizeTimeout);
-		resizeTimeout = setTimeout(() => {
-			buildNavbar();
-		}, 250);
 	});
 
 loadBlogList();
