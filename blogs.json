@@ -1,9 +1,5 @@
 [
   {
-    "title": "Tabs using CSS only",
-    "file": "blogs/CSS_only_Tabs.md"
-  },
-  {
     "title": "iostream not found : nvim warnings",
     "file": "blogs/nvim-cpp-warnings.md"
   }
