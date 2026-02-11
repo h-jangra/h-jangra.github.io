@@ -1,107 +1,62 @@
+const USER = 'h-jangra';
+const PINNED = ['NppVim', 'Ghost.sh', 'DocumentViewer'];
+const KEY = 'gh_pinned_cache';
+const DAY = 86400000;
 
-let blogs = [];
-const content = document.getElementById("content");
-const maxVisible = 4;
+async function loadPinned() {
+  const el = document.getElementById('repos-container');
+  const cache = JSON.parse(localStorage.getItem(KEY) || 'null');
 
-// Load blogs.json
-async function loadBlogList() {
-    try {
-        content.innerHTML = '<div class="loading"></div>';
+  if (cache && Date.now() - cache.time < DAY) {
+    el.innerHTML = render(cache.data);
+    return;
+  }
 
-        const res = await fetch("blogs.json");
-        blogs = await res.json();
+  try {
+    const repos = await Promise.all(
+      PINNED.map(name =>
+        fetch(`https://api.github.com/repos/${USER}/${name}`)
+          .then(r => r.json())
+      )
+    );
 
-        // Check if there's a hash in the URL
-        if (location.hash) {
-            const hash = location.hash.substring(1);
-            if (hash.toLowerCase() === "about") {
-                loadAboutPage();
-            } else {
-                loadBlog(hash.replaceAll('-', ' '));
-            }
-        } else {
-            showHome();
-        }
-    } catch (error) {
-        content.innerHTML = "<p>Error loading blog list. Please check if blogs.json exists.</p>";
-    }
+    localStorage.setItem(KEY, JSON.stringify({
+      data: repos,
+      time: Date.now()
+    }));
+
+    el.innerHTML = render(repos);
+
+  } catch {
+    el.innerHTML = '<p class="error">Failed to load projects</p>';
+  }
 }
 
-// Load a blog post
-async function loadBlog(blogId) {
-    const bid = blogId.replaceAll('-', ' ');
-    const blog = blogs.find(b => b.title.toLowerCase() === bid.toLowerCase());
-
-    if (!blog) {
-        showHome();
-        return;
-    }
-
-    try {
-        content.innerHTML = '<div class="loading"></div>';
-        const res = await fetch(blog.file);
-        const text = await res.text();
-        content.innerHTML = marked.parse(text);
-    } catch (err) {
-        content.innerHTML = "<p>Error loading blog post. Check if the file exists.</p>";
-    }
+function render(repos) {
+  return repos.map(r => `
+    <div class="repo-card">
+      <h3><a href="${r.html_url}" target="_blank">${r.name}</a></h3>
+      ${r.description ? `<p>${r.description}</p>` : ''}
+      <div class="repo-meta">
+        ${r.language || ''}
+        ⭐ ${r.stargazers_count}
+        🍴 ${r.forks_count}
+      </div>
+    </div>
+  `).join('');
 }
 
-// Show list of blog posts
-function showHome() {
-    content.innerHTML = "<h2>Posts</h2><section id='blog-index'></section>";
-    const ul = document.getElementById("blog-index");
+document.addEventListener('DOMContentLoaded', loadPinned);
 
-    blogs.forEach((b) => {
-        const id = b.title.replaceAll(' ', '-');
-        const li = document.createElement("article");
-        const a = document.createElement("a");
-        a.href = "#" + id;
-        a.textContent = b.title;
-        a.addEventListener("click", (e) => {
-            e.preventDefault();
-            loadBlog(id);
-            history.pushState({ id: id }, "", "#" + id);
-        });
-        li.appendChild(a);
-        ul.appendChild(li);
-    });
-}
 
-// Load About page
-async function loadAboutPage() {
-    try {
-        content.innerHTML = '<div class="loading"></div>';
-        const res = await fetch("blogs/About.md"); // Make sure this file exists
-        const text = await res.text();
-        content.innerHTML = marked.parse(text);
-    } catch (err) {
-        content.innerHTML = "<p>Error loading About page. Check if About.md exists.</p>";
-    }
-}
+// Footer
+document.getElementById('year').textContent = new Date().getFullYear();
 
-// Handle back/forward buttons
-window.addEventListener("popstate", (e) => {
-    if (e.state && e.state.id) {
-        if (e.state.id.toLowerCase() === "about") {
-            loadAboutPage();
-        } else {
-            loadBlog(e.state.id.replaceAll('-', ' '));
-        }
-    } else {
-        showHome();
-    }
-});
+const buildDate = new Date(document.lastModified);
+document.getElementById('last-updated').textContent =
+  buildDate.toLocaleDateString('en-IN', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric'
+  });
 
-// About link click
-document.addEventListener("DOMContentLoaded", () => {
-    const aboutLink = document.getElementById("about-link");
-    aboutLink.addEventListener("click", (e) => {
-        e.preventDefault();
-        loadAboutPage();
-        history.pushState({ id: "About" }, "", "#about");
-    });
-});
-
-// Initialize
-loadBlogList();
