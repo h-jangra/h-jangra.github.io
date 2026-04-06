@@ -17,7 +17,7 @@
   linkedin: linkedin,
   personal-site: personal-site,
   accent-color: "#7287fd",
-  font: "Inter",
+  font: "Calibri",
   paper: "a4",
   author-position: left,
   personal-info-position: right,
@@ -86,17 +86,36 @@ Cloud & Automation Engineer experienced in AWS infrastructure, AMI lifecycle man
 
 #generic-one-by-two(
   left: [
-    *Languages*
-    JavaScript, C++, PowerShell, Python, Java, Bash
+*Languages*
+ Python, C++, JavaScript
+ 
+*AI/ML*
+ PyTorch, scikit-learn, NumPy, Pandas, Transformers  
 
-    *Web*
-    React, Vue.js, HTML5, CSS3
+*AI Systems* RAG, Prompt Engineering, LLM APIs  
 
-    *Cloud & DevOps*
-    AWS, Jenkins, AMI Lifecycle Management
+*Web*
+ React  
+ 
+*Backend*
+ FastAPI  
+ 
+*Cloud & MLOps*
+ AWS, Docker, CI/CD  
 
-    *Tools*
-    Git, ServiceNow, Linux, Vim, Typst
+*Tools*
+ Git, Linux
   ],
 )
 
+== Certifications
+
+#generic-one-by-two(
+  left: [
+*Google Cloud Certified Generative AI Leader*
+ 
+ *Issued* Aug 2025  
+
+ *Credential ID* CERT-FUN-GAIL
+  ],
+)
