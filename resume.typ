@@ -87,12 +87,7 @@ Cloud & Automation Engineer experienced in AWS infrastructure, AMI lifecycle man
 #generic-one-by-two(
   left: [
 *Languages*
- Python, C++, JavaScript
- 
-*AI/ML*
- PyTorch, scikit-learn, NumPy, Pandas, Transformers  
-
-*AI Systems* RAG, Prompt Engineering, LLM APIs  
+ Python, C++, JavaScript 
 
 *Web*
  React  
