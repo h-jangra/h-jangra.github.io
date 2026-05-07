@@ -39,7 +39,10 @@ Cloud & Automation Engineer experienced in AWS infrastructure, AMI lifecycle man
 - Managed Windows and Linux infrastructure supporting network and backup services.
 - Diagnosed and resolved AWS EC2 and security group configuration issues.
 - Developed and maintained Jenkins pipelines for AWS AMI builds (Windows & RHEL).
+- Troubleshot complex AWS EC2, EBS, IAM, security group, and networking issues to improve system reliability.
+- Worked with AWS services including EC2, EBS, S3, Lambda, CloudWatch, SQS, SNS, SES, and RDS in enterprise environments.
 - Automated AMI build, validation, and cross-account distribution processes.
+- Built internal automation tools and scripts using Python, JavaScript, Bash, and PowerShell to reduce manual operational effort.
 - Coordinated incident resolution across teams to maintain service continuity.
 
 == Education
@@ -87,13 +90,13 @@ Cloud & Automation Engineer experienced in AWS infrastructure, AMI lifecycle man
 #generic-one-by-two(
   left: [
 *Languages*
- Python, C++, JavaScript 
+ Python, C++, JavaScript, Java
 
 *Web*
  React  
  
 *Backend*
- FastAPI  
+ FastAPI, REST APIs
  
 *Cloud & MLOps*
  AWS, Docker, CI/CD  
@@ -112,5 +115,10 @@ Cloud & Automation Engineer experienced in AWS infrastructure, AMI lifecycle man
  *Issued* Aug 2025  
 
  *Credential ID* CERT-FUN-GAIL
+
+
+  *Microsoft Certified: Azure AI Engineer Associate*
+
+  *Issued* 17 April 2026
   ],
 )
