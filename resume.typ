@@ -17,7 +17,7 @@
   linkedin: linkedin,
   personal-site: personal-site,
   accent-color: "#7287fd",
-  font: "Calibri",
+  font: "Roboto",
   paper: "a4",
   author-position: left,
   personal-info-position: right,
@@ -25,7 +25,7 @@
 
 == Summary
 
-Cloud & Automation Engineer experienced in AWS infrastructure, AMI lifecycle management, and Jenkins-based deployment workflows. Strong background in Windows and Linux systems, incident resolution, and building reliable cloud automation pipelines. Currently pursuing B.Sc. in Compute & Design (WiLP) at BITS Pilani.
+Cloud & Automation Engineer with experience in AWS infrastructure, cloud operations, CI/CD workflows, and automation tooling. Skilled in scripting and process automation using Python, JavaScript, Bash, and Java. Experienced with Linux systems, Jenkins workflows, and AWS services in enterprise environments. Currently upskilling in Java backend development with Spring Boot and REST APIs while pursuing B.Sc. in Compute & Design (WiLP) at BITS Pilani.
 
 == Experience
 
@@ -36,14 +36,12 @@ Cloud & Automation Engineer experienced in AWS infrastructure, AMI lifecycle man
   dates: dates-helper(start-date: "Sep 2022", end-date: "Present"),
 )
 
-- Managed Windows and Linux infrastructure supporting network and backup services.
-- Diagnosed and resolved AWS EC2 and security group configuration issues.
-- Developed and maintained Jenkins pipelines for AWS AMI builds (Windows & RHEL).
-- Troubleshot complex AWS EC2, EBS, IAM, security group, and networking issues to improve system reliability.
-- Worked with AWS services including EC2, EBS, S3, Lambda, CloudWatch, SQS, SNS, SES, and RDS in enterprise environments.
-- Automated AMI build, validation, and cross-account distribution processes.
-- Built internal automation tools and scripts using Python, JavaScript, Bash, and PowerShell to reduce manual operational effort.
-- Coordinated incident resolution across teams to maintain service continuity.
+- Managed Windows and Linux infrastructure supporting enterprise cloud services and deployment operations.
+- Worked with Jenkins CI/CD pipelines for AWS/GCP/AZR AMI build, validation, and deployment workflows.
+- Built internal automation tools and operational scripts using Python, JavaScript, and PowerShell to reduce manual effort.
+- Troubleshot AWS EC2, EBS, IAM, networking, and security-related issues across cloud environments.
+- Worked with AWS services including EC2, EBS, S3, CloudWatch, and IAM, with exposure to Lambda, SQS, SNS, SES, and RDS.
+- Collaborated with cross-functional teams to resolve infrastructure and deployment issues.
 
 == Education
 
@@ -89,20 +87,23 @@ Cloud & Automation Engineer experienced in AWS infrastructure, AMI lifecycle man
 
 #generic-one-by-two(
   left: [
-*Languages*
- Python, C++, JavaScript, Java
+    *Languages*
+    Python, C++, JavaScript, Java
 
-*Web*
- React  
- 
-*Backend*
- FastAPI, REST APIs
- 
-*Cloud & MLOps*
- AWS, Docker, CI/CD  
+    *Web*
+    React
 
-*Tools*
- Git, Linux
+    *Backend*
+    Spring Boot, FastAPI, REST APIs
+
+    *Databases*
+    PostgreSQL, MySQL
+
+    *Cloud*
+    AWS, Docker, CI/CD
+
+    *Tools*
+    Git, Linux
   ],
 )
 
@@ -110,15 +111,15 @@ Cloud & Automation Engineer experienced in AWS infrastructure, AMI lifecycle man
 
 #generic-one-by-two(
   left: [
-*Google Cloud Certified Generative AI Leader*
- 
- *Issued* Aug 2025  
+    *Google Cloud Certified Generative AI Leader*
 
- *Credential ID* CERT-FUN-GAIL
+    *Issued* Aug 2025
+
+    *Credential ID* CERT-FUN-GAIL
 
 
-  *Microsoft Certified: Azure AI Engineer Associate*
+    *Microsoft Certified: Azure AI Engineer Associate*
 
-  *Issued* 17 April 2026
+    *Issued* 17 April 2026
   ],
 )
