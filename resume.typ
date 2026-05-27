@@ -87,20 +87,20 @@ Cloud & Automation Engineer with experience in AWS infrastructure, cloud operati
 
 #generic-one-by-two(
   left: [
+    *Cloud*
+    AWS, Docker, CI/CD
+
+    *Backend*
+    FastAPI, REST APIs
+
     *Languages*
     Python, C++, JavaScript, Java
 
+    *Databases*
+    MySQL
+
     *Web*
     React
-
-    *Backend*
-    Spring Boot, FastAPI, REST APIs
-
-    *Databases*
-    PostgreSQL, MySQL
-
-    *Cloud*
-    AWS, Docker, CI/CD
 
     *Tools*
     Git, Linux
@@ -113,13 +113,6 @@ Cloud & Automation Engineer with experience in AWS infrastructure, cloud operati
   left: [
     *Google Cloud Certified Generative AI Leader*
 
-    *Issued* Aug 2025
-
-    *Credential ID* CERT-FUN-GAIL
-
-
     *Microsoft Certified: Azure AI Engineer Associate*
-
-    *Issued* 17 April 2026
   ],
 )
