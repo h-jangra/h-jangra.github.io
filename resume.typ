@@ -1,4 +1,4 @@
-#import "@preview/basic-resume:0.2.9": *
+#import "@preview/coral-cv:0.1.0": *
 
 #let name = "Himanshu Jangra"
 #let location = "Noida, India"
@@ -9,6 +9,25 @@
 #let phone = ""
 #let personal-site = "h-jangra.github.io"
 
+#let project(name: "", role: "", url: "", dates: "") = [
+  #grid(
+    columns: (1fr, auto),
+    column-gutter: 1em,
+    [
+      *#name*
+      #if role != "" {
+        text(fill: rgb("666666"))[ — #role]
+      }
+    ],
+    [
+      #if dates != "" {
+        emph(dates)
+      } else if url != "" {
+        link("https://" + url)[#url]
+      }
+    ],
+  )
+]
 #show: resume.with(
   author: name,
   location: location,
@@ -16,14 +35,14 @@
   github: github,
   linkedin: linkedin,
   personal-site: personal-site,
-  accent-color: "#7287fd",
+  accent-color: rgb("#2f2f2d"),
   font: "Roboto",
   paper: "a4",
   author-position: left,
   personal-info-position: right,
 )
 
-== Summary
+== Profile
 
 Cloud & Automation Engineer with experience in AWS infrastructure, cloud operations, CI/CD workflows, and automation tooling. Skilled in scripting and process automation using Python, JavaScript, Bash, and Java. Experienced with Linux systems, Jenkins workflows, and AWS services in enterprise environments. Currently upskilling in Java backend development with Spring Boot and REST APIs while pursuing B.Sc. in Compute & Design (WiLP) at BITS Pilani.
 
@@ -75,6 +94,14 @@ Cloud & Automation Engineer with experience in AWS infrastructure, cloud operati
 - Focused on terminal usability and workflow efficiency.
 
 #project(
+  name: "InfraMedic",
+  role: "AI-Powered SRE Platform",
+  url: "github.com/h-jangra/InfraMedic",
+)
+
+- Autonomous multi-agent platform for cloud monitoring, incident response, and remediation.
+
+#project(
   name: "DocumentViewer",
   role: "Chrome Extension Development",
   url: "github.com/h-jangra/DocumentViewer",
@@ -87,23 +114,11 @@ Cloud & Automation Engineer with experience in AWS infrastructure, cloud operati
 
 #generic-one-by-two(
   left: [
-    *Cloud*
-    AWS, Docker, CI/CD
+    *Languages:* Java, Python, JavaScript, C++
 
-    *Backend*
-    FastAPI, REST APIs
+    *Technologies:* AWS, Docker, FastAPI, React, REST APIs, CI/CD
 
-    *Languages*
-    Python, C++, JavaScript, Java
-
-    *Databases*
-    MySQL
-
-    *Web*
-    React
-
-    *Tools*
-    Git, Linux
+    *Tools:* Git, Linux, MySQL
   ],
 )
 

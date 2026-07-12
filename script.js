@@ -1,5 +1,5 @@
 const USER = 'h-jangra';
-const PINNED = ['NppVim', 'Ghost.sh', 'DocumentViewer'];
+const PINNED = ['NppVim', 'Ghost.sh', 'DocumentViewer', 'InfraMedic'];
 const KEY = 'gh_pinned_cache';
 const DAY = 86400000;
 
